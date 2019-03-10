@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Berserk_Male.png" type="Texture" id=1]
+[ext_resource path="res://First Scene.gd" type="Script" id=2]
+
+[sub_resource type="ImageTexture" id=1]
+
+flags = 0
+storage = 0
+lossy_quality = 0.7
+flags = 0
+size = Vector2( 0, 0 )
+
+[sub_resource type="ProxyTexture" id=2]
+
+flags = 0
+base = SubResource( 1 )
+
+[node name="Sprite" type="Sprite"]
+
+position = Vector2( 372.325, 220.163 )
+scale = Vector2( 8, 8 )
+texture = ExtResource( 1 )
+normal_map = SubResource( 2 )
+offset = Vector2( 0, -1 )
+vframes = 4
+hframes = 3
+frame = 3
+region_rect = Rect2( 204, 58, 80, 154 )
+script = ExtResource( 2 )
+_sections_unfolded = [ "Animation", "Offset", "Transform", "Z Index" ]
+
+
