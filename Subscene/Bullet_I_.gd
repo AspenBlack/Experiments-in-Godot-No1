@@ -49,8 +49,8 @@ func _physics_process(delta):
 		
 		#print ("Yes")
 		#print (Collision.collider.has_method("Hit"))
-		
-		Collision.collider.Hit()
+		if Collision.collider.has_method("Hit"):
+			Collision.collider.Hit()
 		queue_free()
 	
 	

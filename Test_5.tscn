@@ -1,44 +1,38 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Subscene/Player_TestA.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Subscene/Player_Test_B.gd" type="Script" id=2]
-[ext_resource path="res://Subscene/Player_Test_C.gd" type="Script" id=3]
-[ext_resource path="res://Subscene/Bullet_I_.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Subscene/Bullet_I_.gd" type="Script" id=5]
-[ext_resource path="res://Subscene/TestTarget_II_.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Subscene/Player_Test_C.gd" type="Script" id=2]
+[ext_resource path="res://Subscene/TestTarget_II_.tscn" type="PackedScene" id=3]
 
 [node name="Node" type="Node" index="0"]
 
 [node name="KB2D_Man" parent="." index="0" instance=ExtResource( 1 )]
 
 position = Vector2( 620.767, 308.248 )
-script = ExtResource( 2 )
 
 [node name="KB2D_ManTypeII" parent="." index="1" instance=ExtResource( 1 )]
 
-position = Vector2( 736.399, 72.9032 )
-script = ExtResource( 3 )
+position = Vector2( 58.9329, 117.796 )
+script = ExtResource( 2 )
 
-[node name="KB2D_No3" parent="." index="2" instance=ExtResource( 4 )]
+[node name="KB2D_ManTypeII2" parent="." index="2" instance=ExtResource( 1 )]
 
-position = Vector2( 803.842, 180.817 )
-rotation = -1.54462
-script = ExtResource( 5 )
+position = Vector2( 257.548, 476.934 )
+script = ExtResource( 2 )
 
-[node name="KB2D_No4" parent="." index="3" instance=ExtResource( 4 )]
+[node name="TargetNo1" parent="." index="3" instance=ExtResource( 3 )]
 
-position = Vector2( 503.12, 452.889 )
-rotation = 4.71239
-scale = Vector2( 1.15763, 1.24204 )
-script = ExtResource( 5 )
-
-[node name="TargetNo1" parent="." index="4" instance=ExtResource( 6 )]
-
-position = Vector2( 154.447, 171.388 )
+position = Vector2( 82.3472, 231.244 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="TargetNo2" parent="." index="5" instance=ExtResource( 6 )]
+[node name="TargetNo2" parent="." index="4" instance=ExtResource( 3 )]
 
-position = Vector2( 333.623, 457.202 )
+position = Vector2( 209.829, 302.119 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="TargetNo3" parent="." index="5" instance=ExtResource( 3 )]
+
+position = Vector2( 358.11, 308.921 )
+_sections_unfolded = [ "Transform" ]
 
 
