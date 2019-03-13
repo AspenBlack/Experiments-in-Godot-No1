@@ -20,6 +20,7 @@ func _ready():
 #	pass
  
 func _draw():
+	print ("is called")
 	draw_polyline(ArrayOf2D,Color(255,0,0),2)
 	draw_polyline(ArrayOf2D_2,Color(255,100,0),1)
 	pass

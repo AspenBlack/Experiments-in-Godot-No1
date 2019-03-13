@@ -17,6 +17,8 @@ func _ready():
 
 func Hit():
 	
+	
+	
 	print(get_node("Sprite").name)
 	print(self.name)
 	print($Sprite.frame)

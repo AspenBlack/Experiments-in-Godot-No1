@@ -17,7 +17,7 @@ script = ExtResource( 2 )
 
 [node name="KB2D_ManTypeII2" parent="." index="2" instance=ExtResource( 1 )]
 
-position = Vector2( 257.548, 476.934 )
+position = Vector2( 95.6635, 323.212 )
 script = ExtResource( 2 )
 
 [node name="TargetNo1" parent="." index="3" instance=ExtResource( 3 )]
@@ -27,7 +27,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="TargetNo2" parent="." index="4" instance=ExtResource( 3 )]
 
-position = Vector2( 209.829, 302.119 )
+position = Vector2( 204.388, 345.651 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="TargetNo3" parent="." index="5" instance=ExtResource( 3 )]

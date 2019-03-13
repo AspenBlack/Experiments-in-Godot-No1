@@ -4,15 +4,32 @@ extends KinematicBody2D
 # var a = 2
 # var b = "textvar"
 var countdown = 0.0 
+var countdown2 = 0.0 
 var Bullet_Scene = load("res://Subscene/Bullet_I_.tscn")
 var Bullet_Script = load("res://Subscene/Bullet_I_.gd")
 var thenodes
+var ArrayOf2D_1 = PoolVector2Array([Vector2(0,0),Vector2(30,30)])
+var ArrayOf2D_2 = PoolVector2Array([Vector2(0,0),Vector2(8,40)])
+
 
 func _ready():
 	# Called when the node is added to the scene for the first time.
 	# Initialization here
 	add_to_group("BlueBots")
 	pass
+
+func _draw():
+	#print ("is called")
+	#note is refrenced to where this node is no global
+	draw_polyline(ArrayOf2D_1,Color(255,100,0),2)
+	draw_polyline(ArrayOf2D_2,Color(255,100,0),1)
+
+
+func _physics_process(delta):
+	countdown2 = countdown2-delta
+	if (countdown2 < 0):
+		countdown2 = 1
+		move()
 
 func _process(delta):
 #	# Called every frame. Delta is time since last frame.
@@ -23,7 +40,7 @@ func _process(delta):
 		
 		
 		shoot(get_closest_target().global_position)	
-		move()
+		
 		
 #		print("***Top***")
 #		#print_tree_pretty()
@@ -67,19 +84,19 @@ func shoot( Apoint ):
 	var AnAngle = position.angle_to_point(Apoint)
 	
 	var NewPoint = Apoint - position
-	print ("Tartet Point %s" % Apoint)
-	print ("Angle to TartetAnAngle %s" % (AnAngle*57.29))
-	print ("Current Point %s" % position)
-	print ("Vector from current to Target %s" % NewPoint)
+	#print ("Tartet Point %s" % Apoint)
+	#print ("Angle to TartetAnAngle %s" % (AnAngle*57.29))
+	#print ("Current Point %s" % position)
+	#print ("Vector from current to Target %s" % NewPoint)
 	var bullet = Bullet_Scene.instance()
 	NewPoint = NewPoint.normalized()
-	print ("Vector from current to Target Normalised %s" % NewPoint)
+	#print ("Vector from current to Target Normalised %s" % NewPoint)
 	NewPoint = NewPoint*50
 	bullet.set_name("bullet_A")
 	bullet.set_script(Bullet_Script)
 	bullet.position += NewPoint
 	AnAngle = 270 + (AnAngle * 57.29) #dont get the factor wrong :)
-	print ("Angle loaded %s" % (AnAngle))
+	#print ("Angle loaded %s" % (AnAngle))
 	bullet.rotation_degrees = AnAngle
 	#bullet.position.y += 10
 	add_child(bullet)
@@ -89,9 +106,25 @@ func shoot( Apoint ):
 
 func move():
 	var Amove = Vector2(10,0)
-	move_and_collide(Amove)
+	var Collision = move_and_collide(Amove)
+	if Collision :  #if statement is true is valid variable.
+		print ("Normal Colision %s" % (Collision.normal))
+		print ("Position Colision %s" % (Collision.position))
+		mark_point(to_local(Collision.position))
+		print ("Local Pos Colision %s" % (to_local(Collision.position)))
+		if Collision.collider.has_method("Hit"):
+			Collision.collider.Hit(Amove)
 	
+			
+		
 	pass
 	
-	
 
+func mark_point(apoint) :
+	if (typeof(apoint) != TYPE_VECTOR2):  #if not vector do nothing
+		print ("type Error")
+		return null
+	print ("marking")
+	ArrayOf2D_1 = PoolVector2Array([Vector2(-10,-10) + apoint,Vector2(10,10) + apoint])
+	ArrayOf2D_2 = PoolVector2Array([Vector2(10,-10) + apoint,Vector2(-10,10) + apoint])
+	update()
